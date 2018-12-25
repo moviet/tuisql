@@ -12,217 +12,217 @@ namespace Moviet\Base;
 
 abstract class Centro
 {
-		const EMPTY_SET = null;
+    const EMPTY_SET = null;
 
-		const LOOP_ONE_SET = 1;
-		
-		const IN_BINDING = 'in';
+    const LOOP_ONE_SET = 1;
 
-		const LIMIT_PARAM = 'limit';
+    const IN_BINDING = 'in';
 
-		const BINDING_PARAM = ':';	
+    const LIMIT_PARAM = 'limit';
 
-		const SET_BINDING = '=:';
+    const BINDING_PARAM = ':';	
 
-		const INSERT_TUISQL = 'INSERT';
+    const SET_BINDING = '=:';
 
-		const UPDATE_TUISQL = 'UPDATE';
+    const INSERT_TUISQL = 'INSERT';
 
-		const SELECT_TUISQL = 'SELECT';
+    const UPDATE_TUISQL = 'UPDATE';
 
-		const DELETE_TUISQL = 'DELETE';
+    const SELECT_TUISQL = 'SELECT';
 
-		/**
-		 * Generate join param
-		 * 
-		 * @return array $joins
-		 */
-		protected static $joins = 
-		[
-				'join'		=>	'JOIN',
-				'inner'		=>	'INNER JOIN',
-				'cross'		=>	'CROSS JOIN',
-				'left'		=>	'LEFT JOIN',
-				'right'		=>	'RIGHT JOIN'
-		];
+    const DELETE_TUISQL = 'DELETE';
 
-		/**
-		 * Generate In parameter
-		 *
-		 * @return string
-		 */
-		public static function withIn()
-		{
-				return 'IN';
-		}
+    /**
+    * Generate join param
+    * 
+    * @return array $joins
+    */
+    protected static $joins = 
+    [
+        'join'		=>	'JOIN',
+        'inner'		=>	'INNER JOIN',
+        'cross'		=>	'CROSS JOIN',
+        'left'		=>	'LEFT JOIN',
+        'right'		=>	'RIGHT JOIN'
+    ];
 
-		/**
-		 * Generate Set parameter
-		 * 
-		 * @return string
-		 */
-		public static function withSet()
-		{
-				return 'SET';
-		}
+    /**
+    * Generate In parameter
+    *
+    * @return string
+    */
+    public static function withIn()
+    {
+        return 'IN';
+    }
 
-		/**
-		 * Generate From parameter
-		 * 
-		 * @return string
-		 */
-		public static function withFrom()
-		{
-				return 'FROM';
-		}
+    /**
+    * Generate Set parameter
+    * 
+    * @return string
+    */
+    public static function withSet()
+    {
+        return 'SET';
+    }
 
-		/**
-		 * Generate Into parameter
-		 * 
-		 * @return string
-		 */
-		public static function withInto()
-		{
-				return 'INTO';		
-		}
+    /**
+    * Generate From parameter
+    * 
+    * @return string
+    */
+    public static function withFrom()
+    {
+        return 'FROM';
+    }
 
-		/**
-		 * Generate Like parameter
-		 * 
-		 * @return string
-		 */
-		public static function withLike()
-		{
-				return ' LIKE ';
-		}
+    /**
+    * Generate Into parameter
+    * 
+    * @return string
+    */
+    public static function withInto()
+    {
+        return 'INTO';		
+    }
 
-		/**
-		 * Generate Count parameter
-		 * 
-		 * @return string
-		 */
-		public static function withCount()
-		{
-				return 'COUNT';
-		}
+    /**
+    * Generate Like parameter
+    * 
+    * @return string
+    */
+    public static function withLike()
+    {
+        return ' LIKE ';
+    }
 
-		/**
-		 * Generate Limit parameter
-		 * 
-		 * @return string
-		 */
-		public static function withLimit()
-		{
-				return ' LIMIT ';
-		}
+    /**
+    * Generate Count parameter
+    * 
+    * @return string
+    */
+    public static function withCount()
+    {
+        return 'COUNT';
+    }
 
-		/**
-		 * Generate Values parameter
-		 * 
-		 * @return string
-		 */
-		public static function withValues()
-		{
-				return 'VALUES';	
-		}
+    /**
+    * Generate Limit parameter
+    * 
+    * @return string
+    */
+    public static function withLimit()
+    {
+        return ' LIMIT ';
+    }
 
-		/**
-		 * Generate OrderBy parameter
-		 * 
-		 * @return string
-		 */
-		public static function withOrderBy()
-		{
-				return ' ORDER BY ';
-		}
+    /**
+    * Generate Values parameter
+    * 
+    * @return string
+    */
+    public static function withValues()
+    {
+        return 'VALUES';	
+    }
 
-		/**
-		 * Generate GroupBy parameter
-		 * 
-		 * @return string
-		 */
-		public static function withGroupBy()
-		{
-				return ' GROUP BY ';
-		}
+    /**
+    * Generate OrderBy parameter
+    * 
+    * @return string
+    */
+    public static function withOrderBy()
+    {
+        return ' ORDER BY ';
+    }
 
-		/**
-		 * Generate Distinct parameter
-		 *  
-		 * @return string
-		 */
-		public static function withDistinct()
-		{
-				return 'DISTINCT';
-		}
+    /**
+    * Generate GroupBy parameter
+    * 
+    * @return string
+    */
+    public static function withGroupBy()
+    {
+        return ' GROUP BY ';
+    }
 
-		/**
-		 * Generate Or parameter
-		 * 
-		 * @return string
-		 */
-		public static function withOrCondition()
-		{
-				return ' OR ';
-		}
+    /**
+    * Generate Distinct parameter
+    *  
+    * @return string
+    */
+    public static function withDistinct()
+    {
+        return 'DISTINCT';
+    }
 
-		/**
-		 * Generate And parameter
-		 * 
-		 * @return string
-		 */
-		public static function withAndCondition()
-		{
-				return ' AND ';
-		}
+    /**
+    * Generate Or parameter
+    * 
+    * @return string
+    */
+    public static function withOrCondition()
+    {
+        return ' OR ';
+    }
 
-		/**
-		 * Generate Between parameter
-		 * 
-		 * @return string
-		 */
-		public static function withBetween()
-		{
-				return 'BETWEEN';
-		}
+    /**
+    * Generate And parameter
+    * 
+    * @return string
+    */
+    public static function withAndCondition()
+    {
+        return ' AND ';
+    }
 
-		/**
-		 * Generate Where parameter
-		 * 
-		 * @return string
-		 */
-		public static function withWhereCondition()
-		{
-				return ' WHERE ';
-		}
+    /**
+    * Generate Between parameter
+    * 
+    * @return string
+    */
+    public static function withBetween()
+    {
+        return 'BETWEEN';
+    }
 
-		/**
-		 * Generate Having parameter
-		 * 
-		 * @return string
-		 */
-		public static function withHavingCondition()
-		{
-				return ' HAVING ';
-		}
+    /**
+    * Generate Where parameter
+    * 
+    * @return string
+    */
+    public static function withWhereCondition()
+    {
+        return ' WHERE ';
+    }
 
-		/**
-		 * Generate Join parameter
-		 * 
-		 * @return array $param
-		 */
-		public static function joins($param)
-		{
-				return self::$joins[$param];
-		}
+    /**
+    * Generate Having parameter
+    * 
+    * @return string
+    */
+    public static function withHavingCondition()
+    {
+        return ' HAVING ';
+    }
 
-		/**
-		 * Generate Join On parameter
-		 * 
-		 * @return string
-		 */
-		public static function onCondition()
-		{
-				return 'ON';
-		}
+    /**
+    * Generate Join parameter
+    * 
+    * @return array $param
+    */
+    public static function joins($param)
+    {
+        return self::$joins[$param];
+    }
+
+    /**
+    * Generate Join On parameter
+    * 
+    * @return string
+    */
+    public static function onCondition()
+    {
+        return 'ON';
+    }
 }
