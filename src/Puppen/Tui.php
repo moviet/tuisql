@@ -15,26 +15,26 @@ use \PDOException as InvalidConnectionException;
 abstract class Tui
 {
     /**
-    * Generate sql connection
-    * 
-    * @return object
-    */
+     * Generate sql connection
+     * 
+     * @return object
+     */
     protected static $pdo;
 
     /**
-    * Generate sqlite connection
-    * 
-    * @return object
-    */
+     * Generate sqlite connection
+     *
+     *  @return object
+     */
     protected static $sqlite;
 
     /**
-    * Create database connection
-    * 
-    * @param array $connect
-    * @return object
-    * @throws InvalidConnectionException
-    */
+     * Create database connection
+     * 
+     * @param array $connect
+     * @return object
+     * @throws InvalidConnectionException
+     */
     public static function click($connect = [])
     {
         $connects = is_array($connect) ? $connect : explode(',',$connect); 
@@ -47,9 +47,9 @@ abstract class Tui
             throw new InvalidConnectionException("Database configuration does not valid");
         }			
 
-    // Use try catch to prevent connection failed
-    // that can reveal your credential data
-    // to the user browser 
+        // Use try catch to prevent connection failed
+        // that can reveal your credential data
+        // to the user browser 
         try {
             self::$pdo = new PDO(
                 "{$data[0]}:host={$data[1]};port={$data[2]};dbname={$data[3]};charset=utf8", "{$data[4]}","{$data[5]}"
@@ -70,13 +70,13 @@ abstract class Tui
     }
 
     /**
-    * Create sqlite database connection
-    * 
-    * @param string $path eg. path1/path2/path3
-    * @param string $database eg. (dbname).ext
-    * @return object
-    * @throws InvalidConnectionException
-    */
+     * Create sqlite database connection
+     * 
+     * @param string $path eg. path1/path2/path3
+     * @param string $database eg. (dbname).ext
+     * @return object
+     * @throws InvalidConnectionException
+     */
     public static function sqlite($path = null, $database)
     {
         try {
@@ -99,20 +99,20 @@ abstract class Tui
     }
 
     /**
-    * Close database connection
-    * 
-    * @return null
-    */
+     * Close database connection
+     * 
+     * @return null
+     */
     public static function close()
     {
         return self::$pdo = NULL;
     }
 
     /**
-    * Close sqlite connection
-    * 
-    * @return null
-    */
+     * Close sqlite connection
+     * 
+     * @return null
+     */
     public static function closeSqlite()
     {
         return self::$sqlite = NULL;
