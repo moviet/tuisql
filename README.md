@@ -6,10 +6,9 @@ Tuisql - A dynamic query builder
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fe6415f880494880b69cf574d9248f9d)](https://www.codacy.com/app/moviet/tuisql?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=moviet/tuisql&amp;utm_campaign=Badge_Grade)
 
 **Tuisql** is a fast database query builder, scalable and portability, based on PDO (PHP Data Object)
-as quick prepare statement also build on minimalize source codes with **_richest usage_** it may will help 
-an efficient development and reduce any complexity, just the first you must understand how's PDO works
-for security against **_sql injection_**, we will explain through this docs as detail as we can, so
-you must read and follow by **_carefully_** and also be **happy**
+as quick prepare statement, build on minimalize source codes with **_richest usage_** that may will help you 
+to make an efficient development and reduce any _complexity_ just at the first you have to know how we add 
+security against _sql injection_ on the nice _docs_ you must read by _carefully_ and use with **yaayy**
 
 ## Already
 
@@ -32,7 +31,7 @@ composer require "moviet/tuisql"
 
 ### Build Connection
 
-* You can simply write database configuration like below
+* You can simply write database configuration like imho
 
   | Setting        |
   |:---------------| 
@@ -68,7 +67,7 @@ composer require "moviet/tuisql"
 
 ### Simple CRUD (Create, Read, Update, Delete)
 
-* To insert a database you can use **Add** just like below
+* To _insert_ a database you can use **Add** just like below
   ```php
   require __DIR__ . '/vendor/autoload.php';
 
@@ -84,6 +83,7 @@ composer require "moviet/tuisql"
   $column = ['category','material','color'];
 
   $values = ['jacket','cotton','brown'];
+  
   $connect->from('table')
           ->column($column)
           ->value($values)
@@ -94,7 +94,7 @@ composer require "moviet/tuisql"
   INSERT INTO table (category, material, color) VALUES (:category1, :material2, :color3) 
   `
 
-* Then to read a simple database you can use **Run** as simply like this
+* Then to _read_ a simple database you can use **Run** as simply like this
   ```php
   $values = [$varOne, $varTwo, $varNext];  
 
@@ -109,7 +109,7 @@ composer require "moviet/tuisql"
   SELECT * FROM table WHERE id=:id1 AND product=:product2
   `
 
-* To update database and don't want to make a hard, use **Fresh** method like
+* We don't want make a hard when _update_ database, you can **Fresh** those
   ```php
    // use array style
    $connect->select(['table'])
@@ -119,7 +119,7 @@ composer require "moviet/tuisql"
            ->fresh();
   ```
 
-* And last to delete database you can express **Del** with smile
+* And last to _delete_ database you can express **Del** with yayy
   ```php
    // use commas style
    $connect->from('table')
@@ -128,16 +128,16 @@ composer require "moviet/tuisql"
            ->del();
   ```
 
-  By example codes on above, you are **_totally free_** to express your styles
+  By some different examples on above, you are **_totally free_** to express your styles
 
 ### Various Of Query
 
-* Add **Limit** Condition
+* Add single **Limit** Condition
   ```php
   $select  = ['column','column','column'];
-  $wheres  = ['where','yougo'];
+  $wheres  = ['notes','usage'];
    
-  $values  = ['pretty','easy'];  
+  $values  = ['sweet','easy'];  
 
   $connect->select($select)
           ->from('table')
@@ -150,9 +150,9 @@ composer require "moviet/tuisql"
 * Add **Offset Or Limits** Condition
   ```php
   $select  = 'column, column, column';
-  $wheres  = 'hotel, motel';
+  $wheres  = 'type, category';
 
-  $values  = ['not','hard', 10, 20];  // <= Add binding values
+  $values  = ['comma','yippy', 10, 20];  // <= Add binding values
 
   $connect->select($select)
           ->from('table')
@@ -163,7 +163,7 @@ composer require "moviet/tuisql"
   ```   
 
   `
-  SELECT column, column, column FROM table WHERE hotel=:hotel1 AND motel=:motel2 LIMIT :one, :two
+  SELECT column, column, column FROM table WHERE type=:type1 AND category=:category2 LIMIT :one, :two
   `
 
 * Add **Count** Condition
@@ -230,11 +230,11 @@ composer require "moviet/tuisql"
           ->from('table')
           ->isWhere()  // <= require Where condition
           ->like($likes)
-          ->value($data)
+          ->value($values)
           ->run();
   ```
 
-  The above will add auto LIKE with **AND** condition, you can put **->orLike()** to create OR condition
+  The above will add LIKE with **AND** condition, you can put **->orLike()** to create OR condition
 
 * Add **Having** Condition
   ```php
@@ -280,10 +280,10 @@ composer require "moviet/tuisql"
 * Add **Where In** Condition
   ```php
   $select  = ['column AS A','column'];  
-  $whereIn = ['column'];
+  $whereIn = ['column']; // add where in column
   $addIn   = ['ca, ca, ca, ca']; // add uniques :binding
 
-  $values  = ['cheese','sauce','salt','sugar']; // call values
+  $values  = ['cheese','sauce','salt','sugar'];
 
   $connect->select($select)
           ->from('table')
@@ -296,10 +296,10 @@ composer require "moviet/tuisql"
 * Add **Not In** Condition
   ```php
   $select  = ['column','column'];
-  $notIn   = ['column NOT'];
+  $notIn   = ['column NOT']; // add Not explicitely
   $addIn   = ['id, id, id, id'];
 
-  $values  = ['homies','sweet','home','selfie','sussie'];
+  $values  = ['homies','sweet','home','selfie'];
 
   $connect->select($select)
           ->from('table')
@@ -329,9 +329,9 @@ composer require "moviet/tuisql"
   $table   = ['mytable'];
   $join    = ['inner','column.b'];
   $addOn   = ['column.a=column.id','column.b=column.id']; 
-  $wheres  = ['column.aid','column.bid']; // <= add 2 binds column
+  $wheres  = ['column.aid','column.bid']; // <= add 2 :binds column
 
-  $values  = [11, 12]; // <= send 2 values
+  $values  = [11, 12]; // <= send bind with 2 values
 
   $connect->select($select)
           ->from($table)
@@ -368,11 +368,11 @@ composer require "moviet/tuisql"
   ```
 
   **Quotes** :
-   > With various examples on above you can create many styles by your self
+   > With various examples on above you can express many styles by your self
 
 ### Hardcoded Query
 
-* We don't know what is the possibility you want, so you can make a _hardcoded_ like this
+* You don't want anybody knows what you need, so you can make a _hardcoded_ like this
   ```php
   $select  = ['column','column'];
   $table   = ['tableA']
@@ -419,7 +419,7 @@ composer require "moviet/tuisql"
           ->run();
   ```
 
-* You can create a **_Badass_** query that still possible and use **_DRAW_** with hardcoded _manually_
+* You can create a **_Badass_** query that's still possible and use **_DRAW_** with hardcoded _manually_
   ```php
   $colom   = ['columnA','columnB AS Badass'];
   $count   = ['columnD'];
