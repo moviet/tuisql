@@ -3,14 +3,13 @@ Tuisql - A dynamic query builder
 [![Build Status](https://travis-ci.org/moviet/tuisql.svg?branch=master)](https://travis-ci.org/moviet/tuisql)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/usage-easy-ff69b4.svg)](https://github.com/moviet/tuisql)
-[![codecov](https://codecov.io/gh/moviet/tuisql/branch/master/graph/badge.svg)](https://codecov.io/gh/moviet/tuisql)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fe6415f880494880b69cf574d9248f9d)](https://www.codacy.com/app/moviet/tuisql?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=moviet/tuisql&amp;utm_campaign=Badge_Grade)
 
 **Tuisql** is a fast database query builder, scalable and portability, based on PDO (PHP Data Object)
-as quick prepare statement also build on minimalize source codes with _richest usage_ it may will help 
+as quick prepare statement also build on minimalize source codes with **_richest usage_** it may will help 
 an efficient development and reduce any complexity, just the first you must understand how's PDO works
 for security against **_sql injection_**, we will explain through this docs as detail as we can, so
-you must read and follow by **_carefully_** and we hope you **happy** using this lib
+you must read and follow by **_carefully_** and also be **happy**
 
 ## Already
 
@@ -23,11 +22,11 @@ composer require "moviet/tuisql"
 
 ## Features
 
-* Build Connection
-* Simple C.R.U.D
-* Various Of Query
-* Hardcodes Query
-* Retrieve Query
+* **Build Connection**
+* **Simple C.R.U.D**
+* **Various Of Query**
+* **Hardcoded Query**
+* **Retrieve Query**
 
 ## Usage
 
@@ -51,6 +50,12 @@ composer require "moviet/tuisql"
   use Moviet\Base\Puppen\Tui;
   
   $connect = Tui::click(
+      ['driver','hostname','port','dbname','username','password']
+  ); 
+  
+  // Or simply like this
+  
+  $connect = Tui::click(
       ['mysql','localhost','3306','dbname','username','password']
   );  
   ```
@@ -59,11 +64,11 @@ composer require "moviet/tuisql"
   ```php
   $connect = Tui::sqlite('folder/folder/folder','mysqlite.db');
   ```
-  Path location is your mind on your own directory by using _simply format_ like above
+  Path location is your mind on your own directory by using _simply format_ on above
 
 ### Simple CRUD (Create, Read, Update, Delete)
 
-* To insert a database you can use **Add** like just below
+* To insert a database you can use **Add** just like below
   ```php
   require __DIR__ . '/vendor/autoload.php';
 
@@ -89,7 +94,7 @@ composer require "moviet/tuisql"
   INSERT INTO table (category, material, color) VALUES (:category1, :material2, :color3) 
   `
 
-* Then to read a simple database you can use **Run** as simply like
+* Then to read a simple database you can use **Run** as simply like this
   ```php
   $values = [$varOne, $varTwo, $varNext];  
 
@@ -101,12 +106,12 @@ composer require "moviet/tuisql"
   ```
 
   `
-  SELECT * FROM table WHERE id=:id1 AND product=:product2 etc.
+  SELECT * FROM table WHERE id=:id1 AND product=:product2
   `
 
-* To update database and don't want to make a hard, use **Fresh** method
+* To update database and don't want to make a hard, use **Fresh** method like
   ```php
-   // use array
+   // use array style
    $connect->select(['table'])
            ->set(['column','column','column','column'])
            ->where(['column'])
@@ -114,9 +119,9 @@ composer require "moviet/tuisql"
            ->fresh();
   ```
 
-* And last to delete database you can express **Del** with stay on smile
+* And last to delete database you can express **Del** with smile
   ```php
-   // use commas
+   // use commas style
    $connect->from('table')
            ->where('column, column')
            ->value([$anyId, $anyVariable])
@@ -152,7 +157,7 @@ composer require "moviet/tuisql"
   $connect->select($select)
           ->from('table')
           ->where($wheres)
-          ->limits('one, two') // <= add uniques :bind
+          ->limits('one, two') // <= add uniques :bind (implicitely)
           ->value($values)
           ->run();
   ```   
@@ -304,7 +309,7 @@ composer require "moviet/tuisql"
           ->run();
   ```
 
-* Join Tables Without Attributes
+* **Join** Tables Without Attributes
   ```php
   $select  = ['column.a','column.b','column.id as col'];
   $wheres  = ['column.a','column.b'];
@@ -318,7 +323,7 @@ composer require "moviet/tuisql"
           ->run();
   ```
 
-* Inner Join Tables
+* **Inner Join** Tables
   ```php
   $select  = ['column.a*','column.b*'];
   $table   = ['mytable'];
@@ -339,7 +344,7 @@ composer require "moviet/tuisql"
 
   You can join many table with parameter and add attribute eg. [join, inner, left, cross, right]
 
-* Join Multi Table With Where In
+* **Join** Multi Table With **Where In**
   ```php
   $select  = ['column.a*','column.b*'];
   $table   = ['mytable'];
@@ -365,9 +370,9 @@ composer require "moviet/tuisql"
   **Quotes** :
    > With various examples on above you can create many styles by your self
 
-### Hardcodes Query
+### Hardcoded Query
 
-* We don't know what's the possible you want, so you can make a _hardcode_ like this
+* We don't know what is the possibility you want, so you can make a _hardcoded_ like this
   ```php
   $select  = ['column','column'];
   $table   = ['tableA']
@@ -414,7 +419,7 @@ composer require "moviet/tuisql"
           ->run();
   ```
 
-* You can create a **Badass** query that still possible and use **DRAW** with hardcode _manually_
+* You can create a **_Badass_** query that still possible and use **_DRAW_** with hardcoded _manually_
   ```php
   $colom   = ['columnA','columnB AS Badass'];
   $count   = ['columnD'];
@@ -465,7 +470,7 @@ composer require "moviet/tuisql"
   **Notes** :
    > You must add uniques **:name** as binding when you get _values_ from **outside** to prevent **_sql injection_**
 
-  The example on above will produces a hardcode query like below
+  The example on above will produces a hardcoded query like below
 
   ```php
   SELECT columnA, columnB AS Badass, 
@@ -492,7 +497,7 @@ composer require "moviet/tuisql"
          LIMIT :hundred)
   ``` 
 
-#### Joins
+### Joins
 
 | Attributes     | Values          | 
 | -------------- |:----------------| 
@@ -564,6 +569,32 @@ composer require "moviet/tuisql"
 
   $direct = Rtui::notFound($allRow, '404.shtml'); // Direct url eg. url/404.shtml
   ```
+  
+* Retrieve _one column_ of query
+  ```php
+  $allRow = Rtui::oneColumn($query);
+  ```
+  
+* Retrieve _Row Count_ of query
+  ```php
+  $allRow = Rtui::count($query);
+  ```
+  
+* Retrieve _Row Num_ of query
+  ```php
+  $allRow = Rtui::oneNum($query);
+  ```
+  
+* Retrieve _Row Lazy_ of query
+  ```php
+  $allRow = Rtui::oneLazy($query);
+  ```
+  
+* Retrieve _Row Object_ of query
+  ```php
+  $allRow = Rtui::allObj($query);
+  ```
+
 
 ## License
 
