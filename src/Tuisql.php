@@ -15,6 +15,9 @@ namespace Moviet\Base;
 use Moviet\Puppen\Tui;
 use Moviet\Base\Centro;
 
+/**
+ * Let's put T.U.I
+ */
 class Tuisql
 {
     /**
@@ -286,8 +289,8 @@ class Tuisql
     public function distinct($distinct = [])
     {
         $distincts = is_array($distinct) ? implode(', ',$distinct) : $distinct;
-
         $withDistinct = Centro::withDistinct();
+        
         $this->distinct = "{$withDistinct} {$distincts}";		
 
         return $this;
@@ -303,8 +306,8 @@ class Tuisql
     public function count($count = [])
     {
         $counts = is_array($count) ? implode(', ',$count) : $count;
-
         $withCount = Centro::withCount();
+        
         $this->count = self::SPACE . "{$withCount}($counts)";		
 
         return $this;
@@ -403,7 +406,6 @@ class Tuisql
     {
         $where = is_null($this->isWhere) ? Centro::withWhereCondition() : null;
         $type = is_null($this->type) ? Centro::withAndCondition() : $this->type;
-
         $params = is_array($param) ? $param : explode(',',$param); 
         $params = array_map('trim', $params);
         $number = Centro::LOOP_ONE_SET;
@@ -433,11 +435,10 @@ class Tuisql
     public function between($param)
     {
         $type = is_null($this->type) ? Centro::withAndCondition() : $this->type;
-
         $params = is_array($param) ? $param : explode(',',$param); 
         $params = array_map('trim', $params);
-        $number = Centro::LOOP_ONE_SET;
         $between = Centro::withBetween();
+        $number = Centro::LOOP_ONE_SET;
 
         foreach ($params as $key => &$parameter) {
             $value = Centro::BINDING_PARAM . $parameter . $number;
@@ -527,7 +528,6 @@ class Tuisql
     {
         $likes = is_array($like) ? $like : explode(',',$like); 
         $likes = array_map('trim', $likes);
-
         $attrib = is_null($this->attr) ? Centro::withAndCondition() : $this->attr;
         $number = Centro::LOOP_ONE_SET;
 
@@ -836,8 +836,8 @@ class Tuisql
             . $this->where . $this->limit . $this->limits
         ));
 
-        //$statement = $this->track->prepare($statement);
-        //$statement->execute($this->value);
+        $statement = $this->track->prepare($statement);
+        $statement->execute($this->value);
 
         return $statement;
     }
