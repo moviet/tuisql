@@ -226,7 +226,7 @@ class Tuisql
      */
     public function __construct($driver)	
     {
-        if($driver instanceof Tui) {
+        if ($driver instanceof Tui) {
             $this->track = $driver;
         }
     }
@@ -240,7 +240,7 @@ class Tuisql
      */
     public function select($select)
     {
-        $selects = is_array($select) ?	implode(', ',$select) : $select;
+        $selects = is_array($select) ? implode(', ',$select) : $select;
         $this->select = "{$selects}";
 
         return $this;
@@ -255,7 +255,7 @@ class Tuisql
      */
     public function column($column)
     {
-        $columns = is_array($column) ?	implode(', ',$column) : $column;
+        $columns = is_array($column) ? implode(', ',$column) : $column;
         $this->column = "{$columns}";
 
         return $this;
@@ -270,7 +270,7 @@ class Tuisql
      */
     public function table($table)
     {
-        $tables = is_array($table) ?	$table = implode(', ',$table) : $table;
+        $tables = is_array($table) ? $table = implode(', ',$table) : $table;
         $this->table = "{$tables}";
 
         return $this;
@@ -285,7 +285,7 @@ class Tuisql
      */
     public function distinct($distinct = [])
     {
-        $distincts = is_array($distinct) ?	implode(', ',$distinct) : $distinct;
+        $distincts = is_array($distinct) ? implode(', ',$distinct) : $distinct;
 
         $withDistinct = Centro::withDistinct();
         $this->distinct = "{$withDistinct} {$distincts}";		
@@ -302,7 +302,7 @@ class Tuisql
      */
     public function count($count = [])
     {
-        $counts = is_array($count) ?	implode(', ',$count) : $count;
+        $counts = is_array($count) ? implode(', ',$count) : $count;
 
         $withCount = Centro::withCount();
         $this->count = self::SPACE . "{$withCount}($counts)";		
@@ -319,7 +319,7 @@ class Tuisql
      */
     public function from($param)
     {
-        $params = is_array($param) ?	implode(', ',$param) : $param;
+        $params = is_array($param) ? implode(', ',$param) : $param;
         $this->from = "{$params}";
 
         return $this;
@@ -334,7 +334,7 @@ class Tuisql
      */
     public function draw($param)
     {
-        $params = is_array($param) ?	implode('',$param) : $param;
+        $params = is_array($param) ? implode('',$param) : $param;
         $this->draw[] = self::SPACE . $params;			
 
         return $this;
@@ -404,7 +404,7 @@ class Tuisql
         $where = is_null($this->isWhere) ? Centro::withWhereCondition() : null;
         $type = is_null($this->type) ? Centro::withAndCondition() : $this->type;
 
-        $params = is_array($param) ?	$param : explode(',',$param); 
+        $params = is_array($param) ? $param : explode(',',$param); 
         $params = array_map('trim', $params);
         $number = Centro::LOOP_ONE_SET;
 
@@ -434,7 +434,7 @@ class Tuisql
     {
         $type = is_null($this->type) ? Centro::withAndCondition() : $this->type;
 
-        $params = is_array($param) ?	$param : explode(',',$param); 
+        $params = is_array($param) ? $param : explode(',',$param); 
         $params = array_map('trim', $params);
         $number = Centro::LOOP_ONE_SET;
         $between = Centro::withBetween();
@@ -463,7 +463,7 @@ class Tuisql
     public function whereIn($column = null, $param = [])
     {
         $ids = is_array($column) ? implode(', ',$column) : $column; 
-        $params = is_array($param) ?	$param : explode(',',$param); 
+        $params = is_array($param) ? $param : explode(',',$param); 
         $params = array_map('trim', $params);
         $number = Centro::LOOP_ONE_SET;
 
@@ -684,7 +684,7 @@ class Tuisql
      */
     public function groupBy($group)
     {
-        $groups = is_array($group) ?	$group : explode(',',$group); 				
+        $groups = is_array($group) ? $group : explode(',',$group); 				
 
         foreach ($groups as $key => &$params) {
             $param[$key] = $params;
@@ -703,7 +703,7 @@ class Tuisql
      */
     public function orderBy($order)
     {
-        $orders = is_array($order) ?	$order : explode(',',$order); 
+        $orders = is_array($order) ? $order : explode(',',$order); 
 
         foreach ($orders as $key => &$params) {
             $param[$key] = $params;
