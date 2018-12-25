@@ -1,6 +1,6 @@
 {
     "name": "moviet/tuisql",
-    "description": "A database builder library for php",
+    "description": "A php database query builder library",
     "keywords": ["database", "manager", "handler", "wrapper", "builder", "query", "mysql", "postgreSql"],
     "homepage": "https://github.com/moviet/tuisql",
     "type": "library",
