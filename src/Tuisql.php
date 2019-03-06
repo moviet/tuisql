@@ -435,11 +435,12 @@ class Tuisql
     public function between($param)
     {
         $type = is_null($this->type) ? Centro::withAndCondition() : $this->type;
+        $addAnd = !is_null($this->where) ? Centro::withAndCondition() : null;
         $params = is_array($param) ? $param : explode(',',$param); 
         $params = array_map('trim', $params);
-        $between = Centro::withBetween();
         $number = Centro::LOOP_ONE_SET;
-
+        $between = Centro::withBetween();
+        
         foreach ($params as $key => &$parameter) {
             $value = Centro::BINDING_PARAM . $parameter . $number;
             $colon = str_replace('.','',$value);						
@@ -447,7 +448,7 @@ class Tuisql
             $number++;		
         }
 
-        $this->between = join($type, $binding) . Centro::withAndCondition();
+        $this->between = $addAnd . join($type, $binding);
 
         return $this;						
     }
@@ -463,6 +464,7 @@ class Tuisql
      */
     public function whereIn($column = null, $param = [])
     {
+        $addAnd = (!is_null($this->where) || !is_null($this->between)) ? Centro::withAndCondition() : null;
         $ids = is_array($column) ? implode(', ',$column) : $column; 
         $params = is_array($param) ? $param : explode(',',$param); 
         $params = array_map('trim', $params);
@@ -475,7 +477,7 @@ class Tuisql
             $number++;		
         }
 
-        $this->whereIn[] = "{$ids} " . Centro::withIn() . '('.join(',',$binding).')';
+        $this->whereIn[] = "{$addAnd}{$ids} " . Centro::withIn() . '('.join(',',$binding).')';
 
         return $this;						
     }
